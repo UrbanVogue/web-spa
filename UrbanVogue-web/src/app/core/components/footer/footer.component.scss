@@ -38,8 +38,32 @@ footer{
       }
     }
     .footer-top-soc-links{
+      margin-bottom: 13px;
       a{
         margin-right: 22px;
+      }
+    }
+    .lang-changer{
+      a{
+        color: #A4A4A4;
+        leading-trim: both;
+        text-edge: cap;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration: none;
+        transition: 0.1s ease-in;
+        &:hover{
+          color: #0B0B0B;
+        }
+      }
+      .active{
+        color: #0B0B0B;
+      }
+      span{
+        color: #0B0B0B;
+        margin: 0 3px 0 3px;
       }
     }
   }
