@@ -13,7 +13,8 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
     ],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        CatalogueComponent
     ],
     imports: [
         CommonModule

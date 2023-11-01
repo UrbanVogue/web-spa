@@ -1,0 +1,42 @@
+.catalogue-section{
+  .filtration-block{
+
+  }
+  .product-cards-block{
+    .col-lg-4{
+      margin-top: 20px;
+      .product-card-link{
+        text-decoration: none;
+        .product-card-image-block{
+          img{
+            width: 100%;
+          }
+        }
+        .product-card-name{
+          p{
+            color: #000;
+            leading-trim: both;
+            text-edge: cap;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin: 10px 0 10px 0;
+          }
+        }
+        .product-card-price{
+          p{
+            color: #000;
+            leading-trim: both;
+            text-edge: cap;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
