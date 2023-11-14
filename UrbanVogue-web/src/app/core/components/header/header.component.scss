@@ -1,0 +1,94 @@
+header{
+  nav{
+    .container{
+      flex-direction: column;
+      .header-top{
+        width: 100%;
+        padding: 20px 40px 20px 40px;
+        justify-content: space-between;
+        align-items: center;
+        .sex-divider{
+          a{
+            text-decoration: none;
+            leading-trim: both;
+            text-edge: cap;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #A4A4A4;
+            transition: 0.1s ease-in;
+            &:hover{
+              color: #000;
+            }
+            &:first-of-type{
+              margin-right: 50px;
+            }
+          }
+          .active-sex-divider{
+            color: #000;
+          }
+        }
+        .site-logo{
+          img{
+            width: 100%;
+          }
+        }
+        .navbar-content{
+          display: flex;
+          .search-bar{
+            .search-form{
+              label{
+                display: none;
+              }
+              input{
+                border: none;
+                border-bottom: 1px solid black;
+                width: 185px;
+              }
+              input:focus {
+                outline: none;
+              }
+              button {
+                background: transparent;
+                cursor: pointer;
+                border: none;
+                svg {
+                  width: 18px;
+                  margin: 0 5px 0 5px;
+                  padding: 10px 0 10px;
+                  fill: black;
+                }
+              }
+            }
+          }
+        }
+        .cart-profile-block{
+          a:first-of-type{
+            margin-left: 18px;
+          }
+          a:last-of-type{
+            margin-left: 24px;
+          }
+        }
+      }
+      .header-bottom{
+        width: 100%;
+        padding: 8px 24px 8px 24px;
+        display: flex;
+        border-top: 1px solid #EBEBEB;
+        border-bottom: 1px solid #EBEBEB;
+        margin-bottom: 15px;
+        .header-catalogue-content{
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          a{
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
