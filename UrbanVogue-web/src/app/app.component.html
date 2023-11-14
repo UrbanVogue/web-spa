@@ -1,2 +1,6 @@
 <app-header></app-header>
+<div>
+  <button *ngIf="!isUserAuthorized" (click)="login()">Login</button>
+  <button *ngIf="isUserAuthorized" (click)="logout()">Logout</button>
+</div>
 <app-footer></app-footer>

@@ -5,21 +5,34 @@ import { AppComponent } from './app.component';
 
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
-import {AuthModule} from "./modules/auth/auth.module";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthModule, LogLevel} from "angular-auth-oidc-client";
 import {ProductsModule} from "./modules/products/products.module";
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CoreModule,
-        SharedModule,
-        AuthModule,
-        ProductsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    HttpClientModule,
+    ProductsModule,
+    AuthModule.forRoot({
+      config: {
+        authority: 'http://localhost:8010',
+        redirectUrl: window.location.origin,
+        postLogoutRedirectUri: window.location.origin,
+        clientId: 'Angular-Client',
+        scope: 'openid profile',
+        responseType: 'code',
+        logLevel: LogLevel.Debug,
+      },
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
