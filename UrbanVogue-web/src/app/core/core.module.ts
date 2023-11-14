@@ -10,7 +10,7 @@ import {FooterComponent, HeaderComponent} from "./components";
     ],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
     ],
     imports: [
         CommonModule
