@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
-import {AuthModule} from "./modules/auth/auth.module";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthModule, LogLevel} from "angular-auth-oidc-client";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,18 @@ import {AuthModule} from "./modules/auth/auth.module";
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    AuthModule
+    HttpClientModule,
+    AuthModule.forRoot({
+      config: {
+        authority: 'http://localhost:8010',
+        redirectUrl: window.location.origin,
+        postLogoutRedirectUri: window.location.origin,
+        clientId: 'Angular-Client',
+        scope: 'openid profile',
+        responseType: 'code',
+        logLevel: LogLevel.Debug,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
