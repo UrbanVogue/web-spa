@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FooterComponent, HeaderComponent} from "./components";
-import { CatalogueComponent } from './components/catalogue/catalogue.component';
 
 
 
@@ -9,12 +8,10 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
     declarations: [
         FooterComponent,
         HeaderComponent,
-        CatalogueComponent
     ],
     exports: [
         HeaderComponent,
         FooterComponent,
-        CatalogueComponent
     ],
     imports: [
         CommonModule
