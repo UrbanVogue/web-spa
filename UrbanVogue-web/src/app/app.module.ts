@@ -8,6 +8,7 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthModule, LogLevel} from "angular-auth-oidc-client";
 import {ProductsModule} from "./modules/products/products.module";
+import { ProfileModule } from './modules/profile/profile.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {ProductsModule} from "./modules/products/products.module";
     SharedModule,
     HttpClientModule,
     ProductsModule,
+    ProfileModule,
     AuthModule.forRoot({
       config: {
         authority: 'http://localhost:8010',

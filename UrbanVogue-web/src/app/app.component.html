@@ -1,8 +1,3 @@
 <app-header></app-header>
-<div>
-  <button *ngIf="!isUserAuthorized" (click)="login()">Login</button>
-  <button *ngIf="isUserAuthorized" (click)="logout()">Logout</button>
-</div>
-<app-product-page></app-product-page>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
