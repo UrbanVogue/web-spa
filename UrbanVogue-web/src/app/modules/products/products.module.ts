@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 
 
@@ -13,12 +14,10 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
     ProductPageComponent
   ],
   exports: [
-    MainPageComponent,
-    CatalogueComponent,
-    ProductPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductsRoutingModule
   ]
 })
 export class ProductsModule { }
