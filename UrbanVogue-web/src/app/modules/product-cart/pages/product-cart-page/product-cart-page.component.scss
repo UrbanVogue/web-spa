@@ -141,4 +141,51 @@
       }
     }
   }
+  .product-cart-total-price-order{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 35px;
+    p{
+      color: #000;
+      font-feature-settings: 'clig' off, 'liga' off;
+      margin-bottom: 0;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 25.6px; /* 106.667% */
+      letter-spacing: -0.9px;
+      span{
+        color: #000;
+        text-align: right;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 25.6px; /* 106.667% */
+        letter-spacing: -0.9px;
+      }
+    }
+    a{
+      padding: 9px 43px 0 43px;
+      background-color: black;
+      color: #FFF;
+      leading-trim: both;
+      text-edge: cap;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-decoration: none;
+      height: 40px;
+      transition: 0.15s;
+      border: 1px solid transparent;
+      margin-left: 20px;
+      &:hover{
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+      }
+    }
+  }
 }
