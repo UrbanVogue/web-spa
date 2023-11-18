@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: 'catalogue',
     component: CatalogueComponent,
-    canActivate: [AuthorizationGuard],
+    //canActivate: [AuthorizationGuard], ToDo: uncomment after completed or remove
   },
 ];
 

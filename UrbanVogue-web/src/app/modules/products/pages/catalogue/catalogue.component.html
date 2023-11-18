@@ -9,84 +9,87 @@
             <div class="col-lg-9">
                 <div class="product-cards-block">
                     <div class="row">
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image1.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Худі</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image2.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Світшот</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image3.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Світшот-бомбер</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image4.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Гладкий світшот</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image5.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Світшот зі штучної замші на блискавці</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4">
-                            <a href="" class="product-card-link">
-                                <div class="product-card-image-block">
-                                    <img src="assets/images/card_image6.png" alt="">
-                                </div>
-                                <div class="product-card-name">
-                                    <p>Світшот з коміром-стійкою</p>
-                                </div>
-                                <div class="product-card-price">
-                                    <p><span>1 199</span> UAH</p>
-                                </div>
-                            </a>
-                        </div>
+                        <ng-container *ngFor="let item of catalogProducts$ | async">
+                            <div class="col-lg-4">
+                                <a class="product-card-link">
+                                    <div class="product-card-image-block">
+                                        <img [src]="'data:image/jpg;base64,' + item.image.data" alt="{{item.image.name}}">
+                                    </div>
+                                    <div class="product-card-name">
+                                        <p>{{item.name}}</p>
+                                    </div>
+                                    <div class="product-card-price">
+                                        <p><span>{{item.basePrice}}</span> UAH</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </ng-container>
+
+<!--                                                <div class="col-lg-4">-->
+<!--                                                    <a href="" class="product-card-link">-->
+<!--                                                        <div class="product-card-image-block">-->
+<!--                                                            <img src="assets/images/card_image2.png" alt="">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-name">-->
+<!--                                                            <p>Світшот</p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-price">-->
+<!--                                                            <p><span>1 199</span> UAH</p>-->
+<!--                                                        </div>-->
+<!--                                                    </a>-->
+<!--                                                </div>-->
+<!--                                                <div class="col-lg-4">-->
+<!--                                                    <a href="" class="product-card-link">-->
+<!--                                                        <div class="product-card-image-block">-->
+<!--                                                            <img src="assets/images/card_image3.png" alt="">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-name">-->
+<!--                                                            <p>Світшот-бомбер</p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-price">-->
+<!--                                                            <p><span>1 199</span> UAH</p>-->
+<!--                                                        </div>-->
+<!--                                                    </a>-->
+<!--                                                </div>-->
+<!--                                                <div class="col-lg-4">-->
+<!--                                                    <a href="" class="product-card-link">-->
+<!--                                                        <div class="product-card-image-block">-->
+<!--                                                            <img src="assets/images/card_image4.png" alt="">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-name">-->
+<!--                                                            <p>Гладкий світшот</p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-price">-->
+<!--                                                            <p><span>1 199</span> UAH</p>-->
+<!--                                                        </div>-->
+<!--                                                    </a>-->
+<!--                                                </div>-->
+<!--                                                <div class="col-lg-4">-->
+<!--                                                    <a href="" class="product-card-link">-->
+<!--                                                        <div class="product-card-image-block">-->
+<!--                                                            <img src="assets/images/card_image5.png" alt="">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-name">-->
+<!--                                                            <p>Світшот зі штучної замші на блискавці</p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-price">-->
+<!--                                                            <p><span>1 199</span> UAH</p>-->
+<!--                                                        </div>-->
+<!--                                                    </a>-->
+<!--                                                </div>-->
+<!--                                                <div class="col-lg-4">-->
+<!--                                                    <a href="" class="product-card-link">-->
+<!--                                                        <div class="product-card-image-block">-->
+<!--                                                            <img src="assets/images/card_image6.png" alt="">-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-name">-->
+<!--                                                            <p>Світшот з коміром-стійкою</p>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="product-card-price">-->
+<!--                                                            <p><span>1 199</span> UAH</p>-->
+<!--                                                        </div>-->
+<!--                                                    </a>-->
+<!--                                                </div>-->
                     </div>
                 </div>
             </div>
