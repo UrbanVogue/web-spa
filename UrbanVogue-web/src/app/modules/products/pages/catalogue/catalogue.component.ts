@@ -13,6 +13,7 @@ import {Observable} from "rxjs";
 export class CatalogueComponent implements OnInit {
     public catalogProducts$!: Observable<Product[]>;
 
+    
     constructor(private readonly productService: ProductService) {
 
     }

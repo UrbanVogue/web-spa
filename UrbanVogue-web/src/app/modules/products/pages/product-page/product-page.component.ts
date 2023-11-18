@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../../core/services/product.service";
 import {Product} from "../../../../core/models/product";
+import {Observable} from "rxjs";
+import {DetailedProduct} from "../../../../core/models/detailed-product";
+import {Image} from "../../../../core/models/image";
 
 @Component({
     selector: 'app-product-page',
@@ -8,32 +11,25 @@ import {Product} from "../../../../core/models/product";
     styleUrls: ['./product-page.component.scss']
 })
 
-export class ProductPageComponent {
+export class ProductPageComponent implements OnInit{
 
-    constructor(public readonly productService: ProductService) {
+    public product: DetailedProduct = {} as DetailedProduct;
+    public images: Image[] = [];
+
+    constructor(private readonly productService: ProductService) {
+
     }
 
-    // testService() {
-    //     let res = this.productService.getProducts()
-    //         .pipe(tap(response => {
-    //             console.log(response)
-    //         }));
-    //
-    //     let products = res.subscribe();
-    // }
+    ngOnInit(): void {
+        this.productService.getProductById(2).subscribe((product) => {
 
-    testService() {
+            this.product = product;
 
-        let res = this.productService.getProducts()
-         .subscribe();
+            this.product.images.forEach((image) => {
+                this.images.push(image);
+            });
 
-        // let products: Product[] = []
-        //
-        //  res.subscribe({
-        //         next: (v) => v.map(x => products.push(x)),
-        //         error: (e) => console.error(e),
-        //     });
-
-        console.log(res);
-        }
+        });
+        console.log(this.images)
     }
+}

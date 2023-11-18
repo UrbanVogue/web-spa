@@ -5,6 +5,7 @@ import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import {CoreModule} from "../../core/core.module";
 import { ProductsRoutingModule } from './products-routing.module';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 
@@ -12,7 +13,8 @@ import { ProductsRoutingModule } from './products-routing.module';
   declarations: [
     MainPageComponent,
     CatalogueComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CarouselComponent
   ],
   exports: [
   ],
