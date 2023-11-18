@@ -5,6 +5,8 @@ import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import {CoreModule} from "../../core/core.module";
 import { ProductsRoutingModule } from './products-routing.module';
+import {SharedModule} from "../../shared/shared.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -19,7 +21,9 @@ import { ProductsRoutingModule } from './products-routing.module';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-      NgOptimizedImage
-    ]
+    NgOptimizedImage,
+    SharedModule,
+    FormsModule
+  ]
 })
 export class ProductsModule { }
