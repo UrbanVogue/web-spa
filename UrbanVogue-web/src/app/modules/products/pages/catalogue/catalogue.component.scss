@@ -2,10 +2,27 @@
   .filtration-block{
 
   }
+  .catalogue-sorting{
+    display: block;
+    float: right;
+
+    .catalogue-sorting-select{
+      border: 0;
+      background: none;
+    }
+
+    .catalogue-sorting-option{
+      background: none;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+
   .product-cards-block{
     .col-lg-4{
       margin-top: 20px;
       .product-card-link{
+        background-color: #ccc;
         text-decoration: none;
         .product-card-image-block{
           img{
@@ -24,6 +41,26 @@
             margin: 10px 0 10px 0;
           }
         }
+
+        .product-card-rating{
+          margin: 10px 0 10px 0;
+          line-height: normal;
+          display: flex;
+          height: 18px;
+          align-items: start;
+         justify-content: end;
+          p{
+            line-height: normal;
+            margin-right: 5px;
+            font-size: 13px;
+            color: #000;
+          }
+          img{
+            display: block;
+            height: 100%;
+          }
+        }
+
         .product-card-price{
           p{
             color: #000;

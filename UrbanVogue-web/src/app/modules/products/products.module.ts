@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import {SharedModule} from "../../shared/shared.module";
+import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -11,13 +15,18 @@ import { ProductsRoutingModule } from './products-routing.module';
   declarations: [
     MainPageComponent,
     CatalogueComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CarouselComponent
   ],
   exports: [
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    NgOptimizedImage,
+    SharedModule,
+    FormsModule,
+    RouterModule
   ]
 })
 export class ProductsModule { }
