@@ -3,12 +3,16 @@
   .carousel{
     .thumbnail-item {
       width: 80px;
-      height: auto;
+      height: 107px;
       cursor: pointer;
+      margin-bottom: 41.75px;
       img {
         width: 100%;
         height: auto;
       }
+    }
+    .thumbnail-item:last-of-type{
+      margin-bottom: 0;
     }
   }
   .product-name-price-block{
