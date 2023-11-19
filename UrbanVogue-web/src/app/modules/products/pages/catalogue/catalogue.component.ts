@@ -14,6 +14,7 @@ export class CatalogueComponent implements OnInit {
     public sortingTypes!: SortingType[];
     public selectedSortingId: number = 0;
 
+    
     constructor(private readonly productService: ProductService) {
         this.sortingTypes = [
             {id: 0, name: 'За популярністю'},

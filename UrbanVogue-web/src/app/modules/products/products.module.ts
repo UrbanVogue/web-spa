@@ -5,6 +5,7 @@ import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import {CoreModule} from "../../core/core.module";
 import { ProductsRoutingModule } from './products-routing.module';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import {SharedModule} from "../../shared/shared.module";
 import {FormsModule} from "@angular/forms";
 
@@ -14,7 +15,8 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     MainPageComponent,
     CatalogueComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CarouselComponent
   ],
   exports: [
   ],
