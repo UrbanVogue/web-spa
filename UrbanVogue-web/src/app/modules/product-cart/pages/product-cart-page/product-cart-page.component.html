@@ -21,100 +21,20 @@
                     </div>
                 </div>
             </div>
-            <div class="product-cart-table-content">
+            <div *ngFor="let cartProduct of cartProducts" class="product-cart-table-content">
                 <div class="product-cart-table-item">
                     <div class="row">
                         <div class="col-lg-7 product-cart-item-name">
                             <div class="product-cart-item-image">
-                                <img src="assets/images/product-image5.png" alt="product-image">
+                                <img [src]="'data:image/jpg;base64,' + getImageById(cartProduct.productId)" alt="product-image">
                             </div>
                             <div class="product-cart-item-name-title-color">
                                 <div class="product-cart-item-name-title">
-                                    <p>Бавовняне худі</p>
+                                    <p>{{cartProduct.productName}}</p>
                                 </div>
                                 <div class="product-cart-item-name-color-size">
-                                    <p>Колір: <span>steel blue</span></p>
-                                    <p>Розмір: <span>S | UA 46-48</span></p>
-                                </div>
-                                <div class="product-cart-item-name-delete">
-                                    <a href="">
-                                        Видалити
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#555555"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 product-cart-item-amount">
-                            <select name="amount" id="amount">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-2 product-cart-item-price">
-                            <p>1 199 UAH</p>
-                        </div>
-                        <div class="col-lg-2 product-cart-item-ship-price">
-                            <p>129 UAH</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-cart-table-item">
-                    <div class="row">
-                        <div class="col-lg-7 product-cart-item-name">
-                            <div class="product-cart-item-image">
-                                <img src="assets/images/product-image5.png" alt="product-image">
-                            </div>
-                            <div class="product-cart-item-name-title-color">
-                                <div class="product-cart-item-name-title">
-                                    <p>Бавовняне худі</p>
-                                </div>
-                                <div class="product-cart-item-name-color-size">
-                                    <p>Колір: <span>steel blue</span></p>
-                                    <p>Розмір: <span>S | UA 46-48</span></p>
-                                </div>
-                                <div class="product-cart-item-name-delete">
-                                    <a href="">
-                                        Видалити
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#555555"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 product-cart-item-amount">
-                            <select name="amount" id="amount">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-2 product-cart-item-price">
-                            <p>1 199 UAH</p>
-                        </div>
-                        <div class="col-lg-2 product-cart-item-ship-price">
-                            <p>129 UAH</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-cart-table-item">
-                    <div class="row">
-                        <div class="col-lg-7 product-cart-item-name">
-                            <div class="product-cart-item-image">
-                                <img src="assets/images/product-image5.png" alt="product-image">
-                            </div>
-                            <div class="product-cart-item-name-title-color">
-                                <div class="product-cart-item-name-title">
-                                    <p>Бавовняне худі</p>
-                                </div>
-                                <div class="product-cart-item-name-color-size">
-                                    <p>Колір: <span>steel blue</span></p>
-                                    <p>Розмір: <span>S | UA 46-48</span></p>
+                                    <p>Колір: <span>{{cartProduct.color}}</span></p>
+<!--                                    <p>Розмір: <span>{{cartProduct.size}} | UA</span></p>-->
                                 </div>
                                 <div class="product-cart-item-name-delete">
                                     <a href="">
@@ -135,17 +55,17 @@
                             </select>
                         </div>
                         <div class="col-lg-2 product-cart-item-price">
-                            <p>1 199 UAH</p>
+                            <p>{{cartProduct.price}} UAH</p>
                         </div>
                         <div class="col-lg-2 product-cart-item-ship-price">
-                            <p>129 UAH</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="product-cart-total-price-order">
-            <p>Загальна сума до сплати  <span>1 319 UAH</span></p>
+            <p>Загальна сума до сплати  <span>{{cartSum}} UAH</span></p>
             <a href="">Перейти до оформлення</a>
         </div>
     </div>
