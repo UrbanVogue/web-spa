@@ -36,6 +36,10 @@ export class CatalogueComponent implements OnInit {
        this.selectedSortingId = parseInt(sortingId);
         this.refresh();
     }
+
+    // async onProductClicked(item: Product){
+    //     await this.router.navigateByUrl(`product/${item.id}`);
+    // }
 }
 
 export interface SortingType{

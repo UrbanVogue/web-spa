@@ -13,7 +13,7 @@
                 </div>
                 <div class="product-cards-block">
                     <div class="row">
-                        <div class="col-lg-4" *ngFor="let item of catalogProducts$ | async">
+                        <div class="col-lg-4" *ngFor="let item of catalogProducts$ | async" [routerLink]="['/catalogue', item.id]">
                             <a class="product-card-link">
                                 <div class="product-card-image-block">
                                     <img [src]="'data:image/jpg;base64,' + item.image.data" alt="{{item.image.name}}">

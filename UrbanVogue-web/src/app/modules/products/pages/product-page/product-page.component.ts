@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../../core/services/product.service";
-import {Product} from "../../../../core/models/product";
-import {empty, Observable} from "rxjs";
 import {DetailedProduct} from "../../../../core/models/detailed-product";
 import {Image} from "../../../../core/models/image";
 import {ProductItem} from "../../../../core/models/product-item";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-product-page',
@@ -12,7 +11,7 @@ import {ProductItem} from "../../../../core/models/product-item";
     styleUrls: ['./product-page.component.scss']
 })
 
-export class ProductPageComponent implements OnInit{
+export class ProductPageComponent implements OnInit {
 
     public product: DetailedProduct = {} as DetailedProduct;
     public images: Image[] = [];
@@ -26,8 +25,9 @@ export class ProductPageComponent implements OnInit{
 
     public chosenSize: string = '';
 
-    constructor(private readonly productService: ProductService) {
-
+    constructor(private readonly productService: ProductService,
+                private route: ActivatedRoute
+    ) {
     }
 
     changeActiveColor(color: string) {
@@ -55,7 +55,16 @@ export class ProductPageComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.productService.getProductById(2).subscribe((product) => {
+        const idParam = this.route.snapshot.paramMap.get('id');
+        let productId: number = -1;
+        if (idParam == null) {
+            console.log("Product id was not provided")
+            return;
+        } else {
+            productId = parseInt(idParam);
+        }
+
+        this.productService.getProductById(productId).subscribe((product) => {
             this.product = product;
             this.product.images.forEach((image) => {
                 this.images.push(image);
@@ -65,6 +74,10 @@ export class ProductPageComponent implements OnInit{
                 this.allColors.add(productItem.color.toLowerCase());
                 this.allSizes.add(productItem.size);
             });
+            if (this.productItems != null && this.productItems.length > 0) {
+                this.changeActiveColor(this.productItems[0].color);
+                this.chooseSize(this.productItems[0].size);
+            }
         });
 
     }

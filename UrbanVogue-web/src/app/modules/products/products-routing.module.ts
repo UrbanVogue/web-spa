@@ -13,7 +13,7 @@ const routes: Routes = [
     //canActivate: [AuthorizationGuard], ToDo: uncomment after completed or remove
   },
   {
-    path: 'product',  // ToDo: uncomment after completed or remove
+    path: 'catalogue/:id',  // ToDo: uncomment after completed or remove
     component: ProductPageComponent,
     //canActivate: [AuthorizationGuard],
   },

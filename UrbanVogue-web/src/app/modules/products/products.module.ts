@@ -3,11 +3,11 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
-import {CoreModule} from "../../core/core.module";
 import { ProductsRoutingModule } from './products-routing.module';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import {SharedModule} from "../../shared/shared.module";
 import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -25,7 +25,8 @@ import {FormsModule} from "@angular/forms";
     ProductsRoutingModule,
     NgOptimizedImage,
     SharedModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class ProductsModule { }
