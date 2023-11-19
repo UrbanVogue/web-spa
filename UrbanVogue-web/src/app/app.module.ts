@@ -8,7 +8,9 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthModule, LogLevel} from "angular-auth-oidc-client";
 import {ProductsModule} from "./modules/products/products.module";
+import {ProductCartModule} from "./modules/product-cart/product-cart.module";
 import { ProfileModule } from './modules/profile/profile.module';
+
 
 
 @NgModule({
