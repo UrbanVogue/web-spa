@@ -6,6 +6,8 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import {CoreModule} from "../../core/core.module";
 import { ProductsRoutingModule } from './products-routing.module';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import {SharedModule} from "../../shared/shared.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -21,7 +23,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-      NgOptimizedImage
-    ]
+    NgOptimizedImage,
+    SharedModule,
+    FormsModule
+  ]
 })
 export class ProductsModule { }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 
 
@@ -7,11 +7,11 @@ import { CommonModule } from '@angular/common';
   declarations: [
 
   ],
-  exports: [
-
-  ],
+    exports: [
+    ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgOptimizedImage
   ]
 })
 export class SharedModule { }
