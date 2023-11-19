@@ -20,32 +20,42 @@
             <div class="col-lg-4">
                 <div class="product-name-price-block">
                     <div class="product-name">
-                        <p>Бавовняне худі</p>
+                        <p>{{product.name}}</p>
                     </div>
                     <div class="product-price">
-                        <p><span>1 199</span> UAH</p>
+                        <p><span>{{product.basePrice}}</span> UAH</p>
                     </div>
                 </div>
                 <div class="product-color-block">
                     <div class="product-color-name">
-                        <p>Колір - <span>steel blue</span></p>
+                        <p>Колір - <span>{{activeColor}}</span></p>
                     </div>
                     <div class="color-options">
-                        <a href="#" class="color-option blue active"></a>
-                        <a href="#" class="color-option black"></a>
-                        <a href="#" class="color-option dark-blue"></a>
-                        <a href="#" class="color-option red"></a>
+                        <div *ngFor="let color of allColors">
+                            <div *ngIf="color === activeColor; else elseblock" (click)="changeActiveColor(color)"
+                                 class="color-option {{color}} active"></div>
+                            <ng-template #elseblock>
+                                <div (click)="changeActiveColor(color)"
+                                     class="color-option {{color}} default-border"></div>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
                 <div class="product-size-block">
                     <div class="product-size-name">
-                        <p>Розмір - <span>Обрати</span></p>
+                        <p>Розмір - <span>{{chosenSize}}</span></p>
                     </div>
                     <div class="product-size">
-                        <a href=""><span>S</span> | UA <span>46-48</span></a>
-                        <a href=""><span>M</span> | UA <span>48-50</span></a>
-                        <a href=""><span>L</span> | UA <span>50-54</span></a>
-                        <a href=""><span>XL</span> | UA <span>54-56</span></a>
+                        <ng-container *ngFor="let size of allSizes">
+                            <a
+                                    (click)="chooseSize(size)"
+                                    [ngClass]="{'chosen': size === chosenSize}"
+                                    *ngIf="isActiveSize(size); else elseblock"><span>{{size}}</span> | UA
+                            </a >
+                            <ng-template #elseblock>
+                                <a (click)="chooseSize(size)" class="excluded"><span>{{size}}</span> | UA </a >
+                            </ng-template>
+                        </ng-container>
                     </div>
                 </div>
                 <div class="buy-product-block">
