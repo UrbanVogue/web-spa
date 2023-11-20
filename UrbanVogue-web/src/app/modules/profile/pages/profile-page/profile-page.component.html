@@ -1,1 +1,5 @@
-<p>profile-page works!</p>
+<div class="test-user-info" *ngIf="(userProfile$ | async) as user">
+    <div>{{user.family_name}}</div>
+    <div>{{user.given_name}}</div>
+    <div>{{user.name}}</div>
+</div>
