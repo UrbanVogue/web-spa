@@ -1,1 +1,72 @@
-<p>profile-page works!</p>
+<div class="container mb-5 mt-5">
+    <h2 class="text-3xl mb-4">Налаштування облікового запису</h2>
+    <div>
+        <h3 class="text-muted text-uppercase mb-4">Інформація про обліковий запис</h3>
+        <div class="mb-5">
+            <div class="mb-3">
+                <label for="login" class="form-label">Логін</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="login"
+                        value="user-login"
+                />
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        value="user@name.com"
+
+                />
+            </div>
+        </div>
+    </div>
+    <div class="mb-5 mt-4">
+        <h3 class="text-muted text-uppercase mb-4">Персональні дані</h3>
+        <div class="row g-3">
+            <div class="col">
+                <label for="firstName" class="form-label">Ім'я</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        value="user"
+                />
+            </div>
+            <div class="col">
+                <label for="lastName" class="form-label">Прізвище</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        value="name"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <button class="btn btn-primary">Зберегти зміни</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-secondary">Скинути зміни</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3 class="text-muted text-uppercase mb-4">
+                Видалення облікового запису
+            </h3>
+            <p class="text-muted">
+                Якщо ви запитаєте видалення облікового запису, його буде видалено через
+                14 днів. Протягом цього часу ви можете увійти до свого облікового
+                запису, щоб знову активувати його та скасувати видалення. Через 14 днів
+                видалення стане незворотнім.
+            </p>
+            <button class="btn btn-danger mt-3">Запит на видалення</button>
+        </div>
+    </div>
+</div>

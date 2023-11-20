@@ -78,6 +78,7 @@ export class ProductPageComponent implements OnInit {
         const cartProduct = {} as CartProduct;
         cartProduct.quantity = 1;
         cartProduct.color = productItem.color;
+        cartProduct.size = productItem.size;
         cartProduct.price = this.product.basePrice;
         cartProduct.productId = Number(this.product.id);
         cartProduct.productName = this.product.name;

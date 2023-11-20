@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProfilePageComponent,
-    canActivate: [AuthorizationGuard],
+    //canActivate: [AuthorizationGuard],
   },
 ];
 
