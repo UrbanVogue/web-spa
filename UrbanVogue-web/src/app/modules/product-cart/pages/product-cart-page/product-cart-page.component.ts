@@ -3,6 +3,7 @@ import {CartService} from "../../../../core/services/cart.service";
 import {CartProduct} from "../../../../core/models/cart-product";
 import {ProductService} from "../../../../core/services/product.service";
 import {Product} from "../../../../core/models/product";
+import {catchError} from "rxjs";
 
 @Component({
     selector: 'app-product-cart-page',
@@ -20,10 +21,35 @@ export class ProductCartPageComponent implements OnInit {
     public cartSum: number = 0;
     public products = [] as Product[];
 
+    clearCart() {
+        this.cartService.clearCart().subscribe();
+        this.cartProducts = [];
+        this.cartSum = 0;
+    }
+
+    deleteCartItem(cartProduct: CartProduct) {
+
+    }
+
+    changeCartItemQuantity(cartProduct: CartProduct, quantity: number) {
+
+    }
+
     ngOnInit(): void {
-        this.cartService.getItems().subscribe(data => {
-            this.cartProducts = data.items;
-            this.cartSum = data.totalPrice;
+        this.cartService.getItems()
+            .subscribe({
+                next: data => {
+                    this.cartProducts = data.items;
+                    this.cartSum = data.totalPrice;
+                },
+                error: error => {
+                    if (error.error.message === 'Basket not found') {
+                        console.log('Basket not found')
+                        this.cartProducts = [];
+                    } else {
+                        console.log("Unexpected ERROR: " + error.error.message);
+                    }
+                }
         });
 
         this.productService.getProducts().subscribe(data => {
