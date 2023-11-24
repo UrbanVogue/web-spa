@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../../../../core/services/cart.service";
 import {CartProduct} from "../../../../core/models/cart-product";
 import {ProductService} from "../../../../core/services/product.service";
@@ -28,11 +28,21 @@ export class ProductCartPageComponent implements OnInit {
     }
 
     deleteCartItem(cartProduct: CartProduct) {
-
+        this.cartService.deleteCartItem(cartProduct);
+        this.cartProducts = this.cartProducts.filter(product => product !== cartProduct);
+        this.cartSum -= cartProduct.price * cartProduct.quantity;
     }
 
-    changeCartItemQuantity(cartProduct: CartProduct, quantity: number) {
-
+    changeCartItemQuantity(cartProduct: CartProduct, quantity: string) {
+        this.cartService.changeCartItemQuantity(cartProduct, Number(quantity));
+        this.cartProducts = this.cartProducts
+            .map(product => {
+                if (product === cartProduct) {
+                    product.quantity = Number(quantity);
+                }
+                return product;
+            });
+        this.cartSum = this.cartProducts.reduce((sum, product) => sum + product.price * product.quantity, 0);
     }
 
     ngOnInit(): void {

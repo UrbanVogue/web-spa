@@ -47,11 +47,12 @@
                             </div>
                         </div>
                         <div class="col-lg-1 product-cart-item-amount">
-                            <select name="amount">
+                            <select #quantity [value]="cartProduct.quantity"  (change)="changeCartItemQuantity(cartProduct, quantity.value)" name="amount">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                         <div class="col-lg-2 product-cart-item-price">

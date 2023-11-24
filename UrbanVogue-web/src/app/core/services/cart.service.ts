@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {CartProduct} from "../models/cart-product";
 import {HttpClient} from "@angular/common/http";
 import {CartRequest} from "../models/requests/cart-request";
-import {CartResponse} from "../models/response/cart-response";
+import {CartResponse} from "../models/responses/cart-response";
 import {catchError} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -19,17 +20,16 @@ export class CartService {
                 next: cartResponse => {
                     let cartProducts = cartResponse.items;
                     cartProducts.push(product);
-                    console.log(cartProducts)
 
                     let cartRequest = {} as CartRequest;
                     cartRequest.items = cartProducts;
                     cartRequest.username = 'user';
 
-                    console.log(cartRequest)
-                    return this.http.post('http://localhost:7777/api/v1/basket', cartRequest)
+                    return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                         .subscribe(
                             data => {
-                                console.log("cart post: " + data);
+                                console.log("cart added product, cart products: ");
+                                console.log(data.items)
                             }
                         );
                 },
@@ -39,10 +39,11 @@ export class CartService {
                         cartRequest.items = [product];
                         cartRequest.username = 'user';
 
-                        this.http.post('http://localhost:7777/api/v1/basket', cartRequest)
+                        this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                             .subscribe(
                                 data => {
-                                    console.log("cart post: " + data);
+                                    console.log("cart created, added first product: ");
+                                    console.log(data.items)
                                 }
                             );
                     }
@@ -54,13 +55,74 @@ export class CartService {
         return this.http.get<CartResponse>('http://localhost:7777/api/v1/basket/' + 'user');
     }
 
-    deleteCartItem(productName: string) {
+    deleteCartItem(cartItem: CartProduct) {
+        this.getItems()
+            .subscribe(
+                cartResponse => {
+                    let cartProducts = cartResponse.items;
+                    for (const cartProduct of cartProducts) {
+                        if(cartProduct.productId === cartItem.productId
+                            && cartProduct.color === cartItem.color
+                            && cartProduct.size === cartItem.size){
+                            cartProducts.splice(cartProducts.indexOf(cartProduct), 1);
+                            break;
+                        }
+                    }
+
+                    if (cartProducts.length === 0) {
+                        this.clearCart()
+                            .pipe(
+                                tap(data => console.log("cart deleted"))
+                            )
+                            .subscribe();
+                        return;
+                    }
+
+                    let cartRequest = {} as CartRequest;
+                    cartRequest.items = cartProducts;
+                    cartRequest.username = 'user';
+
+                    return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
+                        .pipe(
+                            tap(data => {
+                                console.log("cart item deleted, cart products left: ");
+                                console.log(data.items);
+                            })
+                        )
+                        .subscribe()
+                });
     }
 
     clearCart() {
         return this.http.delete('http://localhost:7777/api/v1/basket/' + 'user');
     }
 
-    changeCartItemQuantity(cartProduct: CartProduct, quantity: number) {
+    changeCartItemQuantity(changedCartProduct: CartProduct, quantity: number) {
+        this.getItems()
+            .subscribe(
+                cartResponse => {
+                    let cartProducts = cartResponse.items;
+                    for (const cartProduct of cartProducts) {
+                        if(cartProduct.productId === changedCartProduct.productId
+                            && cartProduct.color === changedCartProduct.color
+                            && cartProduct.size === changedCartProduct.size){
+                            cartProduct.quantity = quantity;
+                            break;
+                        }
+                    }
+
+                    let cartRequest = {} as CartRequest;
+                    cartRequest.items = cartProducts;
+                    cartRequest.username = 'user';
+
+                    return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
+                        .pipe(
+                            tap(data => {
+                                console.log("cart item quantity changed, cart products: ");
+                                console.log(data.items);
+                            })
+                        )
+                        .subscribe()
+                });
     }
 }
