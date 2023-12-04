@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
-import { MainPageComponent } from './pages/main-page/main-page.component';
-import { CatalogueComponent } from './pages/catalogue/catalogue.component';
+import { MainPageComponent } from './pages';
+import { CatalogueComponent } from './pages';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { CarouselComponent } from './components/carousel/carousel.component';

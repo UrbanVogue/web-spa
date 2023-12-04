@@ -4,7 +4,7 @@
             <div class="header-top d-flex">
                 <div class="sex-divider">
                     <a href="#">Жінкам</a>
-                    <a href="#" class="active-sex-divider">Чоловікам</a>
+                    <a [routerLink]="['/catalogue']" class="active-sex-divider">Чоловікам</a>
                 </div>
                 <a href="" class="site-logo">
                     <img src="assets/images/logo.svg" alt="logo">
@@ -27,7 +27,7 @@
                         <a [routerLink]="['/profile']">
                             <img src="assets/images/profile-logo.svg" alt="profile">
                         </a>
-                        <a href="#">
+                        <a [routerLink]="['/cart']">
                             <img src="assets/images/product-cart.svg" alt="cart">
                         </a>
                     </div>

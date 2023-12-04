@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
   },
   {
+    path: 'cart',
+    loadChildren: () => import('./modules/product-cart/product-cart.module').then(m => m.ProductCartModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   }
