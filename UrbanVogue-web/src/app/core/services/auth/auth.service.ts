@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
+import {LogoutAuthOptions, OidcSecurityService} from 'angular-auth-oidc-client';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { UserDetails } from '../../models/user-profile';
@@ -27,6 +27,12 @@ export class AuthService {
   }
 
   logout() {
-    return this.oidcSecurityService.logoff();
+    const logoutAuthOptions: LogoutAuthOptions = {
+      customParams: {
+        logout_hint: '',
+      },
+    };
+
+    return this.oidcSecurityService.logoff('', logoutAuthOptions);
   }
 }
