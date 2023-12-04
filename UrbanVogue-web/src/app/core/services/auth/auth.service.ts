@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import {OidcSecurityService} from "angular-auth-oidc-client";
-import {Subject, map, tap} from "rxjs";
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { UserDetails } from '../../models/user-profile';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public isAuthorized = this.oidcSecurityService.isAuthenticated$.pipe(map((isAuthenticated) => isAuthenticated.isAuthenticated));
+  public isAuthorized$: Observable<boolean>;
+  public userProfile$!: Observable<UserDetails>;
 
   constructor(public oidcSecurityService: OidcSecurityService) {
-    this.oidcSecurityService.checkAuth().pipe(
-      tap((auth) => {
-        console.log("Authorized", auth);
-      })
-    )
-      .subscribe();
+    this.isAuthorized$ = this.oidcSecurityService.checkAuth().pipe(
+      map((isAuthenticated) => isAuthenticated.isAuthenticated)
+    );
+    this.userProfile$ = this.oidcSecurityService.userData$.pipe(
+      map((authResult) => authResult.userData as UserDetails)
+    );
   }
   
   login() {
@@ -23,11 +27,6 @@ export class AuthService {
   }
 
   logout() {
-    return this.oidcSecurityService.logoff()
-      .pipe(
-        tap(() => {
-          console.log("Unauthorized");
-        })
-      ).subscribe();
+    return this.oidcSecurityService.logoff();
   }
 }
