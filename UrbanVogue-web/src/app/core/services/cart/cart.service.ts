@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {CartProduct} from "../models/cart-product";
+import {CartProduct} from "../../models/cart-product";
 import {HttpClient} from "@angular/common/http";
-import {CartRequest} from "../models/requests/cart-request";
-import {CartResponse} from "../models/responses/cart-response";
+import {CartRequest} from "../../models/requests/cart-request";
+import {CartResponse} from "../../models/responses/cart-response";
 import {catchError} from "rxjs";
 import {tap} from "rxjs/operators";
 

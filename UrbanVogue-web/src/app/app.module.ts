@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
-import {HttpClientModule} from "@angular/common/http";
-import {AuthModule, LogLevel} from "angular-auth-oidc-client";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor, AuthModule, LogLevel} from "angular-auth-oidc-client";
 import {ProductsModule} from "./modules/products/products.module";
 import {ProductCartModule} from "./modules/product-cart/product-cart.module";
 import { ProfileModule } from './modules/profile/profile.module';
@@ -34,10 +34,13 @@ import { ProfileModule } from './modules/profile/profile.module';
         scope: 'openid profile',
         responseType: 'code',
         logLevel: LogLevel.Debug,
+        secureRoutes: ['http://localhost:8010/user'],
       },
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

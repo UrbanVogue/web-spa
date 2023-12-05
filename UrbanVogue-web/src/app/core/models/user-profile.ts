@@ -1,7 +1,7 @@
 export interface UserDetails {
-    family_name: string;
-    given_name: string;
-    name: string;
-    preferred_username: string;
+    lastName: string;
+    firstName: string;
+    email: string;
     sub: string;
+    id: string;
 }  
