@@ -1,4 +1,4 @@
-<form [formGroup]="userForm"  *ngIf="userProfile$ | async as user" class="container mb-5 mt-5">
+<form [formGroup]="userForm" class="container mb-5 mt-5">
     <h2 class="text-3xl mb-4">Налаштування облікового запису</h2>
     <div>
         <h3 class="text-muted text-uppercase mb-4">Інформація про обліковий запис</h3>
@@ -67,9 +67,9 @@
     </div>
 </form>
 
-<ng-container *ngIf="!(userProfile$ | async)">
-    <div class="container text-center mt-5">
-        <h2 class="text-muted">Профіль користувача не знайдено</h2>
-        <p class="text-muted">На жаль, дані профілю відсутні. Будь ласка, залогуйтеся або створіть профіль.</p>
-    </div>
-</ng-container>
+<!--<ng-container *ngIf="!(userProfile$ | async)">-->
+<!--    <div class="container text-center mt-5">-->
+<!--        <h2 class="text-muted">Профіль користувача не знайдено</h2>-->
+<!--        <p class="text-muted">На жаль, дані профілю відсутні. Будь ласка, залогуйтеся або створіть профіль.</p>-->
+<!--    </div>-->
+<!--</ng-container>-->

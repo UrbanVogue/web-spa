@@ -12,7 +12,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
     styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
-    public userProfile$!: Observable<UserDetails>;
     public initialUser! : UserDetails;
     public userForm!: FormGroup;
 
@@ -21,11 +20,16 @@ export class ProfilePageComponent implements OnInit {
         private readonly _userService: UserService,
         private readonly _router: Router,
         private readonly formBuilder: FormBuilder
-    ) { }
+    ) {
+        this.userForm = this.formBuilder.group({
+            email: ['', Validators.email],
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required]
+        });
+    }
 
     ngOnInit(): void {
-        this.userProfile$ = this._authService.userProfile$;
-        this.userProfile$.pipe(take(1)).subscribe(user => {
+        this._userService.getUserData().pipe(take(1)).subscribe(user => {
             this.initialUser = {...user}
             this.userForm = this.formBuilder.group({
                 email: [user.email, Validators.email],

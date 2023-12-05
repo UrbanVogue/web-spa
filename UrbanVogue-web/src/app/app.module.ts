@@ -34,7 +34,7 @@ import { ProfileModule } from './modules/profile/profile.module';
         scope: 'openid profile',
         responseType: 'code',
         logLevel: LogLevel.Debug,
-        secureRoutes: ['http://localhost:8010/user'],
+        secureRoutes: ['http://localhost:8010/user', 'http://localhost:8010/connect/userinfo'],
       },
     }),
   ],

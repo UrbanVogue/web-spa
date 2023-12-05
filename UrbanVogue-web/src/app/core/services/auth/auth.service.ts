@@ -21,6 +21,13 @@ export class AuthService {
       map((authResult) => authResult.userData as UserDetails)
     );
   }
+
+  public getUserData(): Observable<UserDetails> {
+    return this.oidcSecurityService.getUserData().pipe(
+        tap(result => console.log(result)),
+        map(userData =>  userData as UserDetails)
+    );
+  }
   
   login() {
     this.oidcSecurityService.authorize();
