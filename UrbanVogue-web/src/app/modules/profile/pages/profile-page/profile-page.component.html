@@ -1,4 +1,4 @@
-<div *ngIf="(userProfile$ | async) as user" class="container mb-5 mt-5">
+<form [formGroup]="userForm" class="container mb-5 mt-5">
     <h2 class="text-3xl mb-4">Налаштування облікового запису</h2>
     <div>
         <h3 class="text-muted text-uppercase mb-4">Інформація про обліковий запис</h3>
@@ -8,8 +8,8 @@
                 <input
                         type="email"
                         class="form-control"
+                        formControlName="email"
                         id="email"
-                        value="{{user.name}}"
                 />
             </div>
         </div>
@@ -23,7 +23,7 @@
                         type="text"
                         class="form-control"
                         id="firstName"
-                        value="{{user.given_name}}"
+                        formControlName="firstName"
                 />
             </div>
             <div class="col">
@@ -32,21 +32,27 @@
                         type="text"
                         class="form-control"
                         id="lastName"
-                        value="{{user.family_name}}"
+                        formControlName="lastName"
                 />
             </div>
         </div>
     </div>
     <div class="row mb-5">
         <div class="col">
-            <button class="btn btn-primary">Зберегти зміни</button>
+            <button (click)="applyProfileChanges()" class="btn btn-primary">Зберегти зміни</button>
         </div>
         <div class="col">
-            <button class="btn btn-outline-secondary">Скинути зміни</button>
+            <button (click)="resetProfileChanges()" class="btn btn-outline-secondary">Скинути зміни</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-6 col-md-6">
+            <h3 class="text-muted text-uppercase mb-4">
+                Вийти з облікового запису
+            </h3>
+            <button (click)="logout()" class="btn btn-danger mt-3">Вийти</button>
+        </div>
+        <div class="col-6 col-md-6">
             <h3 class="text-muted text-uppercase mb-4">
                 Видалення облікового запису
             </h3>
@@ -59,4 +65,11 @@
             <button class="btn btn-danger mt-3">Запит на видалення</button>
         </div>
     </div>
-</div>
+</form>
+
+<!--<ng-container *ngIf="!(userProfile$ | async)">-->
+<!--    <div class="container text-center mt-5">-->
+<!--        <h2 class="text-muted">Профіль користувача не знайдено</h2>-->
+<!--        <p class="text-muted">На жаль, дані профілю відсутні. Будь ласка, залогуйтеся або створіть профіль.</p>-->
+<!--    </div>-->
+<!--</ng-container>-->

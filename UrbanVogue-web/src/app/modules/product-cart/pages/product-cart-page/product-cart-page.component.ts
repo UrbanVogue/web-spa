@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CartService} from "../../../../core/services/cart.service";
+import {CartService} from "../../../../core/services/cart/cart.service";
 import {CartProduct} from "../../../../core/models/cart-product";
-import {ProductService} from "../../../../core/services/product.service";
+import {ProductService} from "../../../../core/services/product/product.service";
 import {Product} from "../../../../core/models/product";
 import {catchError} from "rxjs";
 

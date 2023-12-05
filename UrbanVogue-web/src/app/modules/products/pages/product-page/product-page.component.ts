@@ -3,8 +3,8 @@ import {DetailedProduct} from "../../../../core/models/detailed-product";
 import {Image} from "../../../../core/models/image";
 import {ProductItem} from "../../../../core/models/product-item";
 import {ActivatedRoute} from "@angular/router";
-import {ProductService} from "../../../../core/services/product.service";
-import {CartService} from "../../../../core/services/cart.service";
+import {ProductService} from "../../../../core/services/product/product.service";
+import {CartService} from "../../../../core/services/cart/cart.service";
 import {CartProduct} from "../../../../core/models/cart-product";
 
 @Component({

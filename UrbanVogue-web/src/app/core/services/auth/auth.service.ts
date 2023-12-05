@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
+import {LogoutAuthOptions, OidcSecurityService} from 'angular-auth-oidc-client';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { UserDetails } from '../../models/user-profile';
@@ -21,12 +21,25 @@ export class AuthService {
       map((authResult) => authResult.userData as UserDetails)
     );
   }
+
+  public getUserData(): Observable<UserDetails> {
+    return this.oidcSecurityService.getUserData().pipe(
+        tap(result => console.log(result)),
+        map(userData =>  userData as UserDetails)
+    );
+  }
   
   login() {
     this.oidcSecurityService.authorize();
   }
 
   logout() {
-    return this.oidcSecurityService.logoff();
+    const logoutAuthOptions: LogoutAuthOptions = {
+      customParams: {
+        logout_hint: '',
+      },
+    };
+
+    return this.oidcSecurityService.logoff('', logoutAuthOptions);
   }
 }
