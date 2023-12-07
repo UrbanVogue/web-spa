@@ -2,15 +2,18 @@
     <h2 class="text-3xl mb-4">Налаштування облікового запису</h2>
     <div>
         <h3 class="text-muted text-uppercase mb-4">Інформація про обліковий запис</h3>
-        <div class="mb-5" >
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+        <div class="mb-5">
+            <div class="input-group">
                 <input
                         type="email"
                         class="form-control"
                         formControlName="email"
                         id="email"
+                        readonly
                 />
+                <button class="btn btn-primary ms-2" type="button" (click)="changeProfileEmail()">
+                    Змінити пошту
+                </button>
             </div>
         </div>
     </div>
@@ -62,7 +65,7 @@
                 запису, щоб знову активувати його та скасувати видалення. Через 14 днів
                 видалення стане незворотнім.
             </p>
-            <button class="btn btn-danger mt-3">Запит на видалення</button>
+            <button class="btn btn-danger mt-3" (click)="deactivateProfile()">Запит на видалення</button>
         </div>
     </div>
 </form>
