@@ -68,7 +68,7 @@
         <div class="product-cart-total-price-order">
             <p>Загальна сума до сплати  <span>{{cartSum}} UAH</span></p>
             <div (click)="clearCart()" class="clear-cart" >Очистити кошик</div>
-            <a href="">Перейти до оформлення</a>
+            <a [routerLink]="['../orders/checkout']">Перейти до оформлення</a>
         </div>
     </div>
 </section>

@@ -10,6 +10,7 @@ import {AuthInterceptor, AuthModule, LogLevel} from "angular-auth-oidc-client";
 import {ProductsModule} from "./modules/products/products.module";
 import {ProductCartModule} from "./modules/product-cart/product-cart.module";
 import { ProfileModule } from './modules/profile/profile.module';
+import {OrdersModule} from "./modules/orders/orders.module";
 
 
 
@@ -25,6 +26,7 @@ import { ProfileModule } from './modules/profile/profile.module';
     HttpClientModule,
     ProductsModule,
     ProfileModule,
+    OrdersModule,
     AuthModule.forRoot({
       config: {
         authority: 'http://localhost:8010',
