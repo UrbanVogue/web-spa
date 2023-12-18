@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import {mergeMap, Observable} from 'rxjs';
 import { UserDetails } from 'src/app/core/models/user-profile';
 import { AuthService, UserService } from 'src/app/core/services';
 import { Router } from "@angular/router";
@@ -54,5 +54,16 @@ export class ProfilePageComponent implements OnInit {
                 this.initialUser = { ...updatedUser };
             });
         }
+    }
+
+    changeProfileEmail() {
+        const userEmail = this.initialUser.email;
+        this._userService.changeUserEmail(userEmail);
+    }
+
+    deactivateProfile(){
+        this._userService.deactivateUser().pipe(
+            mergeMap(_ => this._authService.logout())
+        ).subscribe();
     }
 }

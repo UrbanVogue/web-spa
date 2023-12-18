@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: urban-vogue-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    command: ["nginx", "-g", "daemon off;"]
