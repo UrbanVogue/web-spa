@@ -3,15 +3,18 @@ import {CartProduct} from "../../models/cart-product";
 import {HttpClient} from "@angular/common/http";
 import {CartRequest} from "../../models/requests/cart-request";
 import {CartResponse} from "../../models/responses/cart-response";
-import {catchError} from "rxjs";
 import {tap} from "rxjs/operators";
+import {UserService} from "../user/user.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
 
-    constructor(private readonly http: HttpClient) {
+    constructor(
+        private readonly http: HttpClient,
+        private readonly userService: UserService
+    ) {
     }
 
     addToCart(product: CartProduct) {
@@ -124,5 +127,9 @@ export class CartService {
                         )
                         .subscribe()
                 });
+    }
+
+    checkout() {
+        return this.http.post('http://localhost:7777/api/v1/basket/checkout/' + this.userService.getUserName(), null);
     }
 }

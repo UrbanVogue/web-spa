@@ -11,6 +11,8 @@ export class UserService {
   private readonly baseUrl: string = 'http://localhost:8010/user';
   constructor(private readonly _httpClient: HttpClient) { }
 
+  private authenticatedUserName : string = 'user';
+
   public updateUser(user: UpdateUserRequest): Observable<any> {
     const updateUrl = `${this.baseUrl}`;
     return this._httpClient.put<any>(updateUrl, user);

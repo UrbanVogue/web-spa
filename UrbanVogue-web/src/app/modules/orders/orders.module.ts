@@ -1,18 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OrderHistoryPageComponent } from './pages/order-history-page/order-history-page.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {OrderHistoryPageComponent} from './pages/order-history-page/order-history-page.component';
+import {OrdersRoutingModule} from "./orders-routing.module";
+import {OrderCheckoutPageComponent} from "./pages/order-checkout-page/order-checkout-page.component";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
     declarations: [
-        OrderHistoryPageComponent
+        OrderHistoryPageComponent,
+        OrderCheckoutPageComponent
     ],
     exports: [
-        OrderHistoryPageComponent
+        OrderHistoryPageComponent,
+        OrderCheckoutPageComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        OrdersRoutingModule
     ]
 })
-export class OrdersModule { }
+export class OrdersModule {
+}
