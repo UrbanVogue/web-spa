@@ -26,7 +26,7 @@ export class CartService {
 
                     let cartRequest = {} as CartRequest;
                     cartRequest.items = cartProducts;
-                    cartRequest.username = 'user';
+                    cartRequest.username = this.userService.getUserName();
 
                     return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                         .subscribe(
@@ -40,7 +40,7 @@ export class CartService {
                     if (error.error.message === 'Basket not found') {
                         let cartRequest = {} as CartRequest;
                         cartRequest.items = [product];
-                        cartRequest.username = 'user';
+                        cartRequest.username = this.userService.getUserName();
 
                         this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                             .subscribe(
@@ -55,7 +55,8 @@ export class CartService {
     }
 
     getItems() {
-        return this.http.get<CartResponse>('http://localhost:7777/api/v1/basket/' + 'user');
+        const user = this.userService.getUserName();
+        return this.http.get<CartResponse>(`http://localhost:7777/api/v1/basket/${user}`);
     }
 
     deleteCartItem(cartItem: CartProduct) {
@@ -83,7 +84,7 @@ export class CartService {
 
                     let cartRequest = {} as CartRequest;
                     cartRequest.items = cartProducts;
-                    cartRequest.username = 'user';
+                    cartRequest.username = this.userService.getUserName();
 
                     return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                         .pipe(
@@ -97,7 +98,8 @@ export class CartService {
     }
 
     clearCart() {
-        return this.http.delete('http://localhost:7777/api/v1/basket/' + 'user');
+        const user = this.userService.getUserName();
+        return this.http.delete(`http://localhost:7777/api/v1/basket/${user}`);
     }
 
     changeCartItemQuantity(changedCartProduct: CartProduct, quantity: number) {
@@ -116,7 +118,7 @@ export class CartService {
 
                     let cartRequest = {} as CartRequest;
                     cartRequest.items = cartProducts;
-                    cartRequest.username = 'user';
+                    cartRequest.username = this.userService.getUserName();;
 
                     return this.http.post<CartResponse>('http://localhost:7777/api/v1/basket', cartRequest)
                         .pipe(
@@ -130,6 +132,7 @@ export class CartService {
     }
 
     checkout() {
-        return this.http.post('http://localhost:7777/api/v1/basket/checkout/' + this.userService.getUserName(), null);
+        const userName = this.userService.getUserName();
+        return this.http.post(`http://localhost:7777/api/v1/basket/checkout/${userName}`, null);
     }
 }

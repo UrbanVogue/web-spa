@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {UpdateUserRequest} from "../../models/requests/update-user-request";
 import {UserDetails} from "../../models/user-profile";
 
@@ -11,7 +11,7 @@ export class UserService {
   private readonly baseUrl: string = 'http://localhost:8010/user';
   constructor(private readonly _httpClient: HttpClient) { }
 
-  private authenticatedUserName : string = 'user';
+  public authenticatedUserName : string = '';
 
   public updateUser(user: UpdateUserRequest): Observable<any> {
     const updateUrl = `${this.baseUrl}`;
@@ -24,8 +24,17 @@ export class UserService {
   }
 
   public getUserData(): Observable<UserDetails> {
-    return this._httpClient.get<UserDetails>('http://localhost:8010/connect/userinfo');
+    return this._httpClient.get<UserDetails>('http://localhost:8010/connect/userinfo').pipe(tap(x => this.authenticatedUserName = x.sub));
   }
+
+  public getUserName() {
+    this.getUserData().subscribe({
+        next: data => {
+            this.authenticatedUserName = data.sub;
+        }
+    });
+    return this.authenticatedUserName;
+}
 
   changeUserEmail(email: string) {
     window.location.href = `http://localhost:8010/Account/ChangeEmail?username=${email}`;
